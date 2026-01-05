@@ -5,6 +5,7 @@ const input = document.getElementById('input');
 const output = document.getElementById('output');
 const submitBtn = document.getElementById('submit-btn');
 const getBtn = document.getElementById('get-btn');
+const tHash = document.getElementById('transaction-hash');
 
 const contractAdd = "0x21638bD3019BfbD4Fb7B3d833b1F3F3E07BC2d60";
 
@@ -37,6 +38,7 @@ async function storeValue (num){
     contract = new ethers.Contract(contractAdd, abi, signer);
 
     const tx = await contract.store(num);
+    tHash.innerText = `Transaction Hash: ${tx.hash}`;
     submitBtn.innerText = `Uploading... `
     await tx.wait();
 }
