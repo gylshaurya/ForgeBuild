@@ -38,7 +38,7 @@ async function storeValue (num){
     contract = new ethers.Contract(contractAdd, abi, signer);
 
     const tx = await contract.store(num);
-    tHash.innerText = `Transaction Hash: ${tx.hash}`;
+    tHash.innerText = `Transaction Hash: ${tx.hash}`;   
     submitBtn.innerText = `Uploading... `
     await tx.wait();
 }

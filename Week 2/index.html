@@ -8,6 +8,8 @@
 <body>
     <div id="title">Ledger Smart Contract</div>
 
+    <button class="button" id="connect-btn">Connect wallet</button>
+
     <div id="content">  
         <form id="deposit-form">
             <input class="input" placeholder= "Amount in ETH" type="number" id="deposit-input">
@@ -15,8 +17,19 @@
         </form>
     </div>
 
-    <button class="button" id="show-history">Show History</button>
-    <button class="button" id="show-depositer-list">Show Depositer List</button>
+    <div id="transaction-hash"></div>
+
+    <table id="balance-table">
+        <thead><tr>
+        <th>User Id</th>
+        <th>Balance</th>
+        </tr></thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <!-- <button class="button" id="update-history">Update Transactions</button>
+    <button class="button" id="update-balance">Update Balance</button> -->
 
     <script type="module" src="index.js"></script>
 
