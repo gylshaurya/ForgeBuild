@@ -61,6 +61,10 @@ body{
     border: none ;
 }
 
+.button:hover{
+    background-color: rgb(59, 56, 56);
+}
+
 #name-title{
     margin-right: auto;
     font-size: 1.5rem;

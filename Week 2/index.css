@@ -4,7 +4,7 @@ body{
     justify-content: center;
     flex-direction: column;
     align-items: center;
-    font-family: 'Montserrat', sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif;
 }
 
 #title{
@@ -12,13 +12,21 @@ body{
     font-weight: 900;
     letter-spacing: -0.1rem;
     margin-top: 2rem;
+    margin-bottom: 2rem;
 }
 
+#balance-table{
+    margin-top: 20px;
+}
 
+table{
+    border-collapse: collapse;
+}
 th,
 td {
+    font-weight: 200;
   padding: 8px;
-  border: 1px solid #ddd;
+  border: 1.5px solid #e1dfdf;
   text-align: left;
 }
 
@@ -28,7 +36,7 @@ td {
     background-color: black;
     color: white;
     font-weight: 700;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     border: none ;
     margin-top: 1rem;
 }
@@ -43,5 +51,7 @@ td {
     height: 30px;
     padding: 0.1rem 1rem;
     margin-top: 2rem;
+    margin-bottom: 2rem;
+    margin-right: 0.5rem;
     border-radius: 5rem;
 }
