@@ -94,11 +94,11 @@ export default function Home() {
 
     let Posts = []
 
-    let i = 0
-    while (i < Number(totalPosts)) {
+    let i = Number(totalPosts) - 1
+    while (i >=0) {
       const message = await contract.wall(i)
       Posts.push(message)
-      i+= 1
+      i-= 1
     }
 
     setPosts(Posts)
@@ -109,19 +109,129 @@ export default function Home() {
   }, [])
 
   return (
-    <div>
-      <h2>I Was Here</h2>
+  <div
+    style={{
+      minHeight: "100vh",
+      background: "#fff",
+      padding: "40px",
+      fontFamily: "Arial, sans-serif",
+      color: "#111"
+    }}
+  >
+    <div style={{ maxWidth: 900, margin: "0 auto" }}>
+      <h1
+        style={{
+          textAlign: "center",
+          fontFamily: "monospace",
+          letterSpacing:-3,
+          fontWeight:700,
+          fontSize:40,
+          marginBottom: 30,
+          color: "#111"
+        }}
+      >
+        The Public Wall
+      </h1>
 
-      <input value={message} onChange={e => setMessage(e.target.value)}/>
+      <div
+        style={{
+          background: "#ffffff",
+          padding: 20,
+          borderRadius: 12,
+          marginBottom: 40
+        }}
+      >
+        <input
+          value={message}
+          onChange={e => setMessage(e.target.value)}
+          style={{
+            width: "100%",
+            padding: 12,
+            fontSize: 16,
+            borderRadius: 8,
+            border: "1px solid #ccc",
+            marginBottom: 12,
+            background: "transparent",
+            color: "#111",
+            outline: "none"
+          }}
+        />
 
-      <button onClick={sendMessage}>post</button>
-
-      <div>
-        {posts.map((post, id) => {
-          return (<div key={id}>{post.message} : {post.user} : {post.time} </div>)
-        })}
+        <button
+          onClick={sendMessage}
+          style={{
+            padding: "10px 22px",
+            background: "#111",
+            color: "#fff",
+            fontWeight: 600,
+            fontSize: 15,
+            border: "none",
+            borderRadius: 999,
+            cursor: "pointer"
+          }}
+        >
+          Stick your Note
+        </button>
       </div>
 
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
+          gap: 24
+        }}
+      >
+        {posts.map((post, i) => {
+          const time = new Date(
+            Number(post.time) * 1000
+          ).toLocaleString()
+
+          return (
+            <div
+              key={i}
+              style={{
+                background: "#fff7b2",
+                padding: 16,
+                minHeight: 140,
+                borderRadius: 8,
+              }}
+            >
+              <div
+                style={{
+                  fontSize: 18,
+                  fontWeight:600,
+                  marginBottom: 12,
+                  color: "#1a1a1a",
+                  lineHeight: 1.4
+                }}
+              >
+                {post.message}
+              </div>
+
+              <div
+                style={{
+                  fontSize: 12,
+                  color: "#333",
+                  marginBottom: 6
+                }}
+              >
+                {post.user.slice(0, 30)}...
+              </div>
+
+              <div
+                style={{
+                  fontSize: 11,
+                  color: "#555"
+                }}
+              >
+                {time}
+              </div>
+            </div>
+          )
+        })}
+      </div>
     </div>
-  )
+  </div>
+)
+
 }
