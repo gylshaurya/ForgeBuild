@@ -63,6 +63,7 @@ const abi = [
 export default function Home() {
   
   const [message, setMessage] = useState("")
+  const [buttonText, setButtonText] = useState("Stick Your Note")
   const [posts, setPosts] = useState([])
   const [contract, setContract] = useState(null)
 
@@ -82,8 +83,12 @@ export default function Home() {
       return
     }
 
+    setButtonText("Sticking your Note...")
+
     const tx = await contract.post(message)
     await tx.wait()
+
+    setButtonText("Updating the Wall...")
 
     setMessage("")
     loadMessages(contract)
@@ -102,6 +107,8 @@ export default function Home() {
     }
 
     setPosts(Posts)
+
+    setButtonText("Stick Your Note")
   }
 
   useEffect(() => {
@@ -170,7 +177,7 @@ export default function Home() {
             cursor: "pointer"
           }}
         >
-          Stick your Note
+          {buttonText}
         </button>
       </div>
 
