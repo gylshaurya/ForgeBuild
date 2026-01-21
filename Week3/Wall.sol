@@ -10,14 +10,9 @@ contract Wall {
     }
 
     Entry[] public wall;
-    mapping(address => bool) public hasPosted;
 
     function post(string calldata _message) external {
-        require(!hasPosted[msg.sender], "Already posted");
-
         wall.push(Entry({user: msg.sender, message: _message, time: block.timestamp}));
-
-        hasPosted[msg.sender] = true;
     }
 
     function getCount() external view returns (uint256) {
